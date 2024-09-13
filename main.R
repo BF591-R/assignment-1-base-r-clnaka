@@ -150,9 +150,9 @@ summarize_matrix <- function(x, na.rm=FALSE) {
                       median=summarize_rows(x, median, na.rm=na.rm),
                       min=summarize_rows(x, min, na.rm=na.rm),
                       max=summarize_rows(x, max, na.rm=na.rm),
-                      num_lt_0=summarize_rows(x, function(v, na.rm=FALSE) sum(less_than_zero(v)), na.rm=na.rm),
-                      num_btw_1_and_5=summarize_rows(x, function(v, na.rm=FALSE) sum(is_between(v, 1, 5)), na.rm=na.rm),
-                      num_na=summarize_rows(x, function(v, na.rm=FALSE) sum(is.na(v)), na.rm=na.rm)
+                      num_lt_0=summarize_rows(x, function(v, na.rm=FALSE) sum(less_than_zero(v), na.rm=na.rm), na.rm=na.rm),
+                      num_btw_1_and_5=summarize_rows(x, function(v, na.rm=FALSE) sum(is_between(v, 1, 5), na.rm=na.rm), na.rm=na.rm),
+                      num_na=summarize_rows(x, function(v, na.rm=FALSE) sum(is.na(v))*(1-na.rm), na.rm=na.rm) # if na.rm=TRUE this will always be zero, so multiply by 0 if na.rm=TRUE
                       )
            )
 }
